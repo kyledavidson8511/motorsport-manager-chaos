@@ -1,0 +1,9 @@
+{
+  "Id": "ChaosMod",
+  "DisplayName": "Chaos — More Crashes & Failures",
+  "Author": "Kyle & Claude",
+  "Version": "1.0.1",
+  "ManagerVersion": "0.27.0",
+  "AssemblyName": "ChaosMod.dll",
+  "EntryMethod": "ChaosMod.Main.Load"
+}
