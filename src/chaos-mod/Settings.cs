@@ -35,6 +35,25 @@ namespace ChaosMod
         // Added on top of the game's own per-part catastrophic rates.
         public float ExtraRetirementChance = 0.10f;
 
+        // ---- Practice & qualifying (1.1.0) ----
+        // The base game has no crashes or failures outside races. Chances are per car per session.
+        public bool PracticeQualiChaos = true;
+        public float PracticeCrashChanceRound1 = 0.06f;
+        public float PracticeCrashChanceSettled = 0.03f;
+        public float PracticeFailureChanceRound1 = 0.10f;
+        public float PracticeFailureChanceSettled = 0.03f;
+        public float QualiCrashChanceRound1 = 0.04f;
+        public float QualiCrashChanceSettled = 0.02f;
+        public float QualiFailureChanceRound1 = 0.06f;
+        public float QualiFailureChanceSettled = 0.02f;
+        // Repair time as a share of the session (randomised ±30-40%).
+        public float CrashRepairShare = 0.5f;
+        public float FailureRepairShare = 0.2f;
+        public bool QualiCrashEndsSession = true;
+        // Off: crash damage is put back so the race car is untouched. On: the game's
+        // crash damage (parts at 0-20%) stays for the race.
+        public bool CrashDamageCarriesOver = false;
+
         // ---- Debug ----
         public bool LogEvents = true;
 

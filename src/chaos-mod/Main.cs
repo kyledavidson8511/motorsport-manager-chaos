@@ -25,6 +25,16 @@ namespace ChaosMod
             sHarmony = new Harmony(modEntry.Info.Id);
             sHarmony.PatchAll(Assembly.GetExecutingAssembly());
             Enabled = true;
+            try
+            {
+                GameObject overlay = new GameObject("ChaosSessionOverlay");
+                UnityEngine.Object.DontDestroyOnLoad(overlay);
+                overlay.AddComponent<SessionChaosOverlay>();
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Overlay failed to start: " + e.Message);
+            }
             Logger.Log("Chaos mod loaded.");
             return true;
         }
@@ -121,6 +131,25 @@ namespace ChaosMod
             s.ExtraRetirementChance = Slider("Extra chance a failure ends the race", s.ExtraRetirementChance, 0f, 1f, "0%");
 
             GUILayout.Space(8);
+            GUILayout.Label("<b>Practice & qualifying</b> (base game: no crashes or failures outside races; chances are per car per session)");
+            s.PracticeQualiChaos = GUILayout.Toggle(s.PracticeQualiChaos, " Crashes and failures in practice and qualifying");
+            if (s.PracticeQualiChaos)
+            {
+                s.PracticeCrashChanceRound1 = Slider("Practice crash chance — round 1", s.PracticeCrashChanceRound1, 0f, 0.3f, "0%");
+                s.PracticeCrashChanceSettled = Slider("Practice crash chance — settled", s.PracticeCrashChanceSettled, 0f, 0.3f, "0%");
+                s.PracticeFailureChanceRound1 = Slider("Practice failure chance — round 1", s.PracticeFailureChanceRound1, 0f, 0.3f, "0%");
+                s.PracticeFailureChanceSettled = Slider("Practice failure chance — settled", s.PracticeFailureChanceSettled, 0f, 0.3f, "0%");
+                s.QualiCrashChanceRound1 = Slider("Qualifying crash chance — round 1", s.QualiCrashChanceRound1, 0f, 0.3f, "0%");
+                s.QualiCrashChanceSettled = Slider("Qualifying crash chance — settled", s.QualiCrashChanceSettled, 0f, 0.3f, "0%");
+                s.QualiFailureChanceRound1 = Slider("Qualifying failure chance — round 1", s.QualiFailureChanceRound1, 0f, 0.3f, "0%");
+                s.QualiFailureChanceSettled = Slider("Qualifying failure chance — settled", s.QualiFailureChanceSettled, 0f, 0.3f, "0%");
+                s.CrashRepairShare = Slider("Crash repairs (share of the session)", s.CrashRepairShare, 0.05f, 1f, "0%");
+                s.FailureRepairShare = Slider("Failure repairs (share of the session)", s.FailureRepairShare, 0.05f, 1f, "0%");
+                s.QualiCrashEndsSession = GUILayout.Toggle(s.QualiCrashEndsSession, " A qualifying crash ends that car's session");
+                s.CrashDamageCarriesOver = GUILayout.Toggle(s.CrashDamageCarriesOver, " Crash damage carries into the race (off: parts are put back after repairs)");
+            }
+
+            GUILayout.Space(8);
             s.LogEvents = GUILayout.Toggle(s.LogEvents, " Log crash budgets and random failures to the UMM log");
 
             GUILayout.Space(8);
@@ -137,6 +166,19 @@ namespace ChaosMod
             {
                 Settings fresh = new Settings();
                 s.RampEndsAt = fresh.RampEndsAt;
+                s.PracticeQualiChaos = fresh.PracticeQualiChaos;
+                s.PracticeCrashChanceRound1 = fresh.PracticeCrashChanceRound1;
+                s.PracticeCrashChanceSettled = fresh.PracticeCrashChanceSettled;
+                s.PracticeFailureChanceRound1 = fresh.PracticeFailureChanceRound1;
+                s.PracticeFailureChanceSettled = fresh.PracticeFailureChanceSettled;
+                s.QualiCrashChanceRound1 = fresh.QualiCrashChanceRound1;
+                s.QualiCrashChanceSettled = fresh.QualiCrashChanceSettled;
+                s.QualiFailureChanceRound1 = fresh.QualiFailureChanceRound1;
+                s.QualiFailureChanceSettled = fresh.QualiFailureChanceSettled;
+                s.CrashRepairShare = fresh.CrashRepairShare;
+                s.FailureRepairShare = fresh.FailureRepairShare;
+                s.QualiCrashEndsSession = fresh.QualiCrashEndsSession;
+                s.CrashDamageCarriesOver = fresh.CrashDamageCarriesOver;
                 s.CrashesPerRaceRound1 = fresh.CrashesPerRaceRound1;
                 s.CrashesPerRaceSettled = fresh.CrashesPerRaceSettled;
                 s.MaxCrashesPerRace = fresh.MaxCrashesPerRace;
