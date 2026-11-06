@@ -16,7 +16,7 @@ The base game has no crashes or mechanical failures outside races. Chaos 1.1 add
 - **Crashes** use the game's own crash animation. The car then sits out a repair window, about half the session by default. A qualifying crash ends that car's session.
 - **Failures** hit a part (weighted toward unreliable ones). The car smokes and returns to the garage, then can't go out until repairs are done (about a fifth of the session by default).
 - Chances are per car per session and follow the same season curve: higher early in the season, settling later. Rain raises crash risk.
-- No safety car, VSC or yellow flag outside races. Crash damage is put back once the car is repaired, so the race car is untouched (a toggle lets the damage carry over instead).
+- No safety car, VSC or yellow flag outside races. Crash damage is reset right after the crash, so the race car is untouched (a toggle lets the damage carry over instead).
 - A banner shows when one of your cars is under repair.
 - Simulated (skipped) sessions aren't affected.
 
