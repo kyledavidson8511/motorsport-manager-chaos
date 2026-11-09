@@ -2,10 +2,12 @@
 
 Chaos makes incidents and mechanical failures more varied, especially early in a season while parts are unproven. All behavior is configurable from Unity Mod Manager.
 
+**Download:** [Nexus Mods](https://www.nexusmods.com/motorsportmanager/mods/27) · [GitHub releases](https://github.com/kyledavidson8511/motorsport-manager-chaos/releases)
+
 ## Install
 
 1. Install Unity Mod Manager for Motorsport Manager.
-2. Download `ChaosMod-1.1.0.zip` from the GitHub Release.
+2. Download `ChaosMod-1.1.0.zip` from [Nexus Mods](https://www.nexusmods.com/motorsportmanager/mods/27) or the [latest GitHub release](https://github.com/kyledavidson8511/motorsport-manager-chaos/releases/latest).
 3. Extract the `ChaosMod` folder to `Steam/steamapps/common/Motorsport Manager/Mods/`.
 4. Start the game and confirm **Chaos — More Crashes & Failures** is active in UMM.
 
